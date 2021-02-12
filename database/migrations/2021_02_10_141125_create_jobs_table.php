@@ -22,7 +22,10 @@ class CreateJobsTable extends Migration
             $table->dateTime('end_date');
             $table->timestamps();
 
-            $table->foreign('candidate_id')->references('id')->on('candidates'); 
+            $table->foreign('candidate_id')
+                    ->references('id')
+                    ->on('candidates')
+                    ->onDelete('cascade'); 
 
         });
     }
