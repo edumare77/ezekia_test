@@ -22,7 +22,6 @@ class CandidateController extends Controller
         if (!is_null($tableName) ||  $tableName !== '') {
 
             return $this->importCsvInfile($fileName, $tableName);
-            
 
         } else {
 
@@ -38,9 +37,17 @@ class CandidateController extends Controller
 
     public function getCandidateJobs() {
 
-        $candidatesJobs = Candidate::with('getJobs')->get()->toArray();
+        $candidatesJobs = Candidate::getCandidatesAndJobs();
 
-        return $candidatesJobs;
+        if($candidatesJobs !== null) {
+
+            return $candidatesJobs;
+
+        } else {
+
+            return false;
+            
+        }
 
     }
 

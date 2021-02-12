@@ -22,6 +22,15 @@ class Candidate extends Model
         return $this->hasMany(Job::class)->orderBy('start_date', 'desc');
     }
 
+     /**
+    * Get candidates and their jobs
+    */
+    public static function getCandidatesAndJobs() {
+
+        return (new static)::with('getJobs')->get()->toArray();
+         
+    }
+
     
 
     
